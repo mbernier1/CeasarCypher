@@ -142,6 +142,7 @@
     <ClInclude Include="Ceasar.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Ceasar.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

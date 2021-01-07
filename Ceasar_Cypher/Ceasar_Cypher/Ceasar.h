@@ -23,4 +23,5 @@ private:
 	string key;
 };
 
+
 #endif
