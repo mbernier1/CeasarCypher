@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
+#include <istream>
 using std::cout;
 using std::endl;
 using std::cin;
@@ -39,41 +40,78 @@ int main()
 
 }
 
+//void encryption() {
+//    int key = 7;
+//    string filename = "default.txt";
+//    char ch;
+//    
+//    cout << "What is the key you would like to use?" << endl;
+//    //cout << "If key is not chosen, 7 will default." << endl;
+//    cin >> key;
+//    
+//    cout << "Please enter what the name of your .TXT file you would like to encrypt." << endl;
+//    //cout << "If file is not entered, default file will be used." << endl;
+//    cin >> filename;
+//
+//    //Add line for opening file you want
+//    ifstream fin;
+//    fin.open(filename);
+//    if (fin.is_open()) {
+//        ifstream fin("filename", ifstream::in);
+//        while (fin >> ch) {
+//            cout << ch;
+//            //convert to ascii
+//            //cypher math (Plaintext + key) MOD 26
+//            //convert ascii back to plaintext
+//            //convert to UPPER
+//            //new char value to save to new file default_encrypted.txt
+//
+//        }
+//        fin.close();
+//    }
+//    else
+//        cout << "Error file didn't open" << endl;
+//    
+//
+//
+//}
+
 void encryption() {
-    int key = 7;
-    string filename = "default.txt";
+    int key;
     char ch;
-    
-    cout << "What is the key you would like to use?" << endl;
-    //cout << "If key is not chosen, 7 will default." << endl;
+    string filename;
+    string result = "";
+
+    //1. Read in Key.
+    cout << "Please enter the key you would like to used for encryption. (0-25)" << endl;
     cin >> key;
     
-    cout << "Please enter what the name of your .TXT file you would like to encrypt." << endl;
-    //cout << "If file is not entered, default file will be used." << endl;
+    //2. Read in "USERS" name for text file.
+    cout << "Please enter the name of the text file you would like to be encrypted. (example: file.txt)" << endl;
     cin >> filename;
 
-    //Add line for opening file you want
+    //3. Encrypt text from file.
     ifstream fin;
     fin.open(filename);
     if (fin.is_open()) {
-        //ifstream fin("filename", ifstream::in);
+        ifstream fin(filename);
         while (fin >> ch) {
             //cout << ch;
-            //convert to ascii
-            //cypher math (Plaintext + key) MOD 26
-            //convert ascii back to plaintext
-            //convert to UPPER
-            //new char value to save to new file default_encrypted.txt
+            result = int((ch + key)-32);
+            //cout << result;
+
 
         }
         fin.close();
+        cout << result;
     }
     else
-        cout << "Error file didn't open" << endl;
-    
+        cout << "Error file didn't open." << endl;
 
+    //4. Save to new file using previously given name of file with _encrypted added.
 
 }
+
 
 void decryption() {
     string key;
