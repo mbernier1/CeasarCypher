@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="default.txt" />
+    <Text Include="encrypted_text.txt" />
     <Text Include="improper.txt" />
     <Text Include="special.txt" />
   </ItemGroup>

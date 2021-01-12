@@ -29,5 +29,8 @@
     <Text Include="improper.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="encrypted_text.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

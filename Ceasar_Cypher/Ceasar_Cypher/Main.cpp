@@ -1,13 +1,17 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-#include <istream>
+#include <stdio.h>
 using std::cout;
 using std::endl;
 using std::cin;
 using std::string;
 using std::ifstream;
 using std::ofstream;
+using std::rename;
+
+
+
 
 void encryption();
 void decryption();
@@ -18,7 +22,7 @@ int main()
     int  menu = 2;
     cout << "Caesar Cipher" << endl;
     cout << "Would you like to encrypt or decrypt a file?" << endl;
-    cout << "Please enter 1 for encrypt.\nPlease enter 2 for decrypt." << endl;
+    cout << "Please enter 1 for encrypt. (This will CLEAR any previously encrypted text.)\nPlease enter 2 for decrypt." << endl;
     cin >> menu;
 
         switch (menu) {
@@ -40,47 +44,18 @@ int main()
 
 }
 
-//void encryption() {
-//    int key = 7;
-//    string filename = "default.txt";
-//    char ch;
-//    
-//    cout << "What is the key you would like to use?" << endl;
-//    //cout << "If key is not chosen, 7 will default." << endl;
-//    cin >> key;
-//    
-//    cout << "Please enter what the name of your .TXT file you would like to encrypt." << endl;
-//    //cout << "If file is not entered, default file will be used." << endl;
-//    cin >> filename;
-//
-//    //Add line for opening file you want
-//    ifstream fin;
-//    fin.open(filename);
-//    if (fin.is_open()) {
-//        ifstream fin("filename", ifstream::in);
-//        while (fin >> ch) {
-//            cout << ch;
-//            //convert to ascii
-//            //cypher math (Plaintext + key) MOD 26
-//            //convert ascii back to plaintext
-//            //convert to UPPER
-//            //new char value to save to new file default_encrypted.txt
-//
-//        }
-//        fin.close();
-//    }
-//    else
-//        cout << "Error file didn't open" << endl;
-//    
-//
-//
-//}
-
 void encryption() {
     int key;
     char ch;
     string filename;
+    string newfilename = "encrypted_text.txt";
     string result = "";
+
+    ofstream outfile;
+    outfile.open(newfilename, ofstream::out | ofstream::trunc);
+    outfile.close();
+
+
 
     //1. Read in Key.
     cout << "Please enter the key you would like to used for encryption. (0-25)" << endl;
@@ -95,15 +70,23 @@ void encryption() {
     fin.open(filename);
     if (fin.is_open()) {
         ifstream fin(filename);
+        
         while (fin >> ch) {
             //cout << ch;
             result = int((ch + key)-32);
             //cout << result;
-
-
+            ofstream outfile;
+            outfile.open(newfilename, std::ios_base::app);
+            if (outfile.is_open()) {
+                outfile << result;
+            }
+            else {
+                cout << "Output file Error." << endl;
+            }
+            outfile.close();
         }
         fin.close();
-        cout << result;
+        
     }
     else
         cout << "Error file didn't open." << endl;
