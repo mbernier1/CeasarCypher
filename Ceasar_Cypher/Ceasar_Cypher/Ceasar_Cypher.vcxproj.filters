@@ -23,16 +23,10 @@
     <Text Include="default.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="special.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="improper.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
     <Text Include="encrypted_text.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="_encrypted.txt">
+    <Text Include="decrypted_text.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

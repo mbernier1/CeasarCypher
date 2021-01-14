@@ -142,11 +142,9 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="decrypted_text.txt" />
     <Text Include="default.txt" />
     <Text Include="encrypted_text.txt" />
-    <Text Include="improper.txt" />
-    <Text Include="special.txt" />
-    <Text Include="_encrypted.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
