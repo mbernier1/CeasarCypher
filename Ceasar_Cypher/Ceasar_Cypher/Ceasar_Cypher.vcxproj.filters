@@ -32,5 +32,8 @@
     <Text Include="encrypted_text.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="_encrypted.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

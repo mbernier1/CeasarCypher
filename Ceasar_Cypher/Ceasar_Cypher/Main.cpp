@@ -1,20 +1,21 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
-#include <iomanip>
-#include <fstream>
-#include <stdio.h>
 using std::cout;
 using std::endl;
 using std::cin;
 using std::string;
+
+#include <stdio.h>
+#include <iomanip>
+
+#include <fstream>
 using std::ifstream;
 using std::ofstream;
 using std::rename;
 
 
-
-
-void encryption();
-void decryption();
+void Encryption();
+void Decryption();
 
 
 int main()
@@ -25,13 +26,14 @@ int main()
     cout << "Please enter 1 for encrypt. (This will CLEAR any previously encrypted text.)\nPlease enter 2 for decrypt." << endl;
     cin >> menu;
 
-        switch (menu) {
+    switch (menu)
+	{
         case 1:
-            encryption();
+            Encryption();
             break;
 
         case 2:
-            decryption();
+            Decryption();
             break;
 
         default:
@@ -39,64 +41,110 @@ int main()
             
     }
     
-
     return 0;
-
 }
 
-void encryption() {
+void Encryption()
+{
     int key;
     char ch;
-    string filename;
-    string newfilename = "encrypted_text.txt";
+    char filename[100] = "";
+    char newfilename[20] = "_encrypted.txt";
     string result = "";
+    char ext[5] = ".txt";
 
     ofstream outfile;
     outfile.open(newfilename, ofstream::out | ofstream::trunc);
     outfile.close();
 
-
-
     //1. Read in Key.
-    cout << "Please enter the key you would like to used for encryption. (0-25)" << endl;
+    cout << "Please enter the key you would like to use for encryption. (0-25)" << endl;
     cin >> key;
+
+	// this if statement is in case the user decides to use a number bigger than 25
+	if (key >= 26)
+	{
+		// modus by 26 cause that the max letters in alphabet
+		// this will keep the key in the 0-25 range
+        key %= 26;
+
+		// still working this out, not sure if its needed
+		/*
+		if (key == 0)
+		{
+            key = 25;
+		}
+        else
+        {
+            key -= 1;
+        }
+        */
+	}
     
-    //2. Read in "USERS" name for text file.
+    //2. Read in "USERS" name for text file.                                      //take out this stuff in ( ) when strcat works
     cout << "Please enter the name of the text file you would like to be encrypted. (example: file.txt)" << endl;
     cin >> filename;
+    //strcat(filename, ext);
+    
+	//Make this to where the user can name the file and then we add _encrypted.txt to their file name so it will save correctly
+	//May have to move this down further so correct file can be opened
+    //strcat(filename, newfilename);
 
     //3. Encrypt text from file.
     ifstream fin;
     fin.open(filename);
-    if (fin.is_open()) {
+    if (fin.is_open()) 
+    {
         ifstream fin(filename);
         
-        while (fin >> ch) {
+        while (fin >> ch) 
+        { 
             //cout << ch;
+            //atoi(ch);
             result = int((ch + key)-32);
-            //cout << result;
+
+        	// this is not working because "result" is not an int here
+        	/*
+        	 *if (result >= 123)
+        	{
+                cout << "Result needs to be wrapped around to start of alphabet" << endl;
+        	}
+        	if (result <= 96 && result >= 91)
+        	{
+                cout << "Result is between lowercase and uppercase alphabet" << endl;
+        	}
+        	*/
+            cout << result;
             ofstream outfile;
+        	
+            //strcat(filename, newfilename);
+            //strcpy(newfilename, filename);
+
             outfile.open(newfilename, std::ios_base::app);
-            if (outfile.is_open()) {
+        	
+            if (outfile.is_open()) 
+            {
                 outfile << result;
             }
-            else {
+            else 
+            {
                 cout << "Output file Error." << endl;
             }
             outfile.close();
         }
         fin.close();
-        
     }
     else
+    {
         cout << "Error file didn't open." << endl;
-
+    }
     //4. Save to new file using previously given name of file with _encrypted added.
 
 }
 
 
-void decryption() {
+void Decryption()
+{
     string key;
 
 }
