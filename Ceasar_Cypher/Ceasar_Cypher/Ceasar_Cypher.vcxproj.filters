@@ -29,5 +29,8 @@
     <Text Include="decrypted_text.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="decrypted_no_key_text.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

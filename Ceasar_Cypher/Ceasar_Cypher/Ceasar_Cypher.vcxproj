@@ -142,6 +142,7 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="decrypted_no_key_text.txt" />
     <Text Include="decrypted_text.txt" />
     <Text Include="default.txt" />
     <Text Include="encrypted_text.txt" />
