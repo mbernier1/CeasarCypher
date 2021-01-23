@@ -205,7 +205,7 @@ void DecryptNoKey()
 	//char result;
 	int keys[26] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 };
 	string encryptedText = "";
-	string commonWords[5] = { "THE", "AND", "IS", "OF", "IT" };
+	string commonWords[5] = { "AND", "IT", "IS", "THE", "OF" };
 
 	ofstream outfile;
 	outfile.open(newFilename, ofstream::out | ofstream::trunc);
